@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestSelect">
+
+    <TextView
+        android:id="@+id/numofqns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="No of questions:"
+        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Test"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:text="Topics:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_name_text" />
+
+    <TextView
+        android:id="@+id/test_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:text="Test Name:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <CheckBox
+        android:id="@+id/logical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:text="Logical"
+        app:layout_constraintBottom_toBottomOf="@+id/topic"
+        app:layout_constraintStart_toEndOf="@+id/topic"
+        app:layout_constraintTop_toTopOf="@+id/topic"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <CheckBox
+        android:id="@+id/quant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantitative"
+        app:layout_constraintBottom_toBottomOf="@+id/logical"
+        app:layout_constraintStart_toEndOf="@+id/logical"
+        app:layout_constraintTop_toTopOf="@+id/logical" />
+
+    <CheckBox
+        android:id="@+id/verbal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verbal"
+        app:layout_constraintBottom_toBottomOf="@+id/quant"
+        app:layout_constraintStart_toEndOf="@+id/quant"
+        app:layout_constraintTop_toTopOf="@+id/quant" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Difficulty Level:"
+        app:layout_constraintStart_toStartOf="@+id/topic"
+        app:layout_constraintTop_toBottomOf="@+id/topic" />
+
+    <RadioGroup
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19">
+
+        <RadioButton
+            android:id="@+id/easy"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:text="Easy"
+            app:layout_constraintEnd_toStartOf="@+id/rbmedium"
+            tools:layout_editor_absoluteY="230dp" />
+
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="90dp"
+            android:layout_height="48dp"
+            android:text="Medium"
+            app:layout_constraintEnd_toStartOf="@+id/rbhard"
+            tools:layout_editor_absoluteY="230dp" />
+
+        <RadioButton
+            android:id="@+id/hard"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Hard"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="230dp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/numqns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/numofqns"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/numofqns"
+        app:layout_constraintTop_toTopOf="@+id/numofqns">
+
+        <RadioButton
+            android:id="@+id/twenty"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:text="20"
+            app:layout_constraintEnd_toStartOf="@+id/rbmedium" />
+
+        <RadioButton
+            android:id="@+id/fourty"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:text="40"
+            app:layout_constraintEnd_toStartOf="@+id/rbhard" />
+
+        <RadioButton
+            android:id="@+id/sixty"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:text="60" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/timetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Time:"
+        app:layout_constraintStart_toStartOf="@+id/numofqns"
+        app:layout_constraintTop_toBottomOf="@+id/numofqns" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/timetext"
+        app:layout_constraintStart_toEndOf="@+id/timetext"
+        app:layout_constraintTop_toTopOf="@+id/timetext" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Start Test"
+        app:layout_constraintEnd_toEndOf="@+id/numqns"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="@+id/timetext"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Select Test Preferences:"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/heading"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+    <EditText
+        android:id="@+id/test_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:ems="10"
+        android:hint=" Test Name"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/test_name_text"
+        app:layout_constraintStart_toEndOf="@+id/test_name_text"
+        app:layout_constraintTop_toTopOf="@+id/test_name_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudyMaterials">
+
+    <View
+        android:id="@+id/rectangleView"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:layout_marginTop="50dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:background="#ADD8E6" />
+
+    <ImageView
+        android:id="@+id/ic_logical"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:contentDescription="Icon 1"
+        android:src="@drawable/logical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
+
+    <View
+        android:id="@+id/darkGreyLine2"
+        android:layout_width="1dp"
+        android:layout_height="76dp"
+        android:background="#A9A9A9"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_verbal"
+        app:layout_constraintEnd_toStartOf="@+id/ic_quantitative"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toEndOf="@+id/verbal"
+        app:layout_constraintTop_toTopOf="@+id/ic_verbal" />
+
+    <TextView
+        android:id="@+id/quantitative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="17dp"
+        android:text="Quantitative"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_quantitative"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ic_quantitative"
+        app:layout_constraintTop_toTopOf="@+id/ic_quantitative"
+        app:layout_constraintVertical_bias="0.448" />
+
+    <View
+        android:id="@+id/darkGreyLine1"
+        android:layout_width="1dp"
+        android:layout_height="76dp"
+        android:background="#A9A9A9"
+        app:layout_constraintBottom_toBottomOf="@+id/logical"
+        app:layout_constraintEnd_toStartOf="@+id/ic_verbal"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toEndOf="@+id/logical"
+        app:layout_constraintTop_toTopOf="@+id/logical"
+        app:layout_constraintVertical_bias="0.491" />
+
+    <TextView
+        android:id="@+id/logical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Logical"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_logical"
+        app:layout_constraintStart_toEndOf="@+id/ic_logical"
+        app:layout_constraintTop_toTopOf="@+id/ic_logical"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <ImageView
+        android:id="@+id/ic_verbal"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:contentDescription="Icon 2"
+        android:src="@drawable/verbal"
+        app:layout_constraintBottom_toBottomOf="@+id/logical"
+        app:layout_constraintLeft_toRightOf="@id/ic_logical"
+        app:layout_constraintRight_toLeftOf="@id/ic_quantitative"
+        app:layout_constraintStart_toEndOf="@+id/logical"
+        app:layout_constraintTop_toTopOf="@+id/logical"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <!-- Text for Third Icon -->
+
+    <TextView
+        android:id="@+id/verbal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Verbal"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_verbal"
+        app:layout_constraintStart_toEndOf="@+id/ic_verbal"
+        app:layout_constraintTop_toTopOf="@+id/ic_verbal"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <ImageView
+        android:id="@+id/ic_quantitative"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:contentDescription="Icon 3"
+        android:src="@drawable/quantitative"
+        app:layout_constraintBottom_toBottomOf="@+id/verbal"
+        app:layout_constraintStart_toEndOf="@+id/verbal"
+        app:layout_constraintTop_toTopOf="@+id/verbal"
+        app:layout_constraintVertical_bias="0.482" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
