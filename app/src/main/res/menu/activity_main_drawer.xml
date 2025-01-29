@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/myprofile"
+            android:icon="@drawable/profile"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_study_materials"
+            android:icon="@drawable/study_materials"
+            android:title="Study Materials" />
+        <item
+            android:id="@+id/taketest"
+            android:icon="@drawable/test"
+            android:title="Take Test" />
+        <item
+            android:id="@+id/nav_results"
+            android:icon="@drawable/result"
+            android:title="Test Results" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/feedback"
+            android:title="Feedback" />
+<!--        <item-->
+<!--            android:id="@+id/nav_complaint"-->
+<!--            android:icon="@drawable/complaint"-->
+<!--            android:title="Complaint" />-->
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+    </group>
+</menu>

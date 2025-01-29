@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#4CAF50</color> <!-- Example color for green -->
+    <color name="red">#F44336</color> <!-- Example color for red -->
+    <color name="orange">#FF9800</color> <!-- Example color for orange -->
+    <color name="blue">#2196F3</color> <!-- Example color for blue -->
+    <color name="light_gray">#D3D3D3</color> <!-- Example color for light gray -->
+    <color name="yellow">#FFEB3B</color>
+    <color name="gray">#D3D3D3</color> <!-- Light Gray -->
+</resources>

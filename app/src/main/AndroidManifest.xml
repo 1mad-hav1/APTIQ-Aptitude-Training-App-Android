@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo_transparent"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Aptitude"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".SectionTest"
+            android:exported="false" />
+        <activity
+            android:name=".CustomViewResults"
+            android:exported="false" />
+        <activity
+            android:name=".Results"
+            android:exported="false" />
+        <activity
+            android:name=".TestResult"
+            android:exported="false" />
+        <activity
+            android:name=".TestPage"
+            android:exported="false" />
+        <activity
+            android:name=".TestSelect"
+            android:exported="false" />
+        <activity
+            android:name=".DetailedContent"
+            android:exported="false" />
+        <activity
+            android:name=".StudyMaterialQuant"
+            android:exported="false" />
+        <activity
+            android:name=".StudyMaterialVerbal"
+            android:exported="false" />
+        <activity android:name=".StudyMaterialLogical" />
+        <activity
+            android:name=".ui.bottom_navbar_study"
+            android:exported="false" />
+        <activity
+            android:name=".bottom_study_navbar"
+            android:exported="false" />
+        <activity
+            android:name=".StudyMaterials"
+            android:exported="false" />
+        <activity
+            android:name=".ViewFeedbacks"
+            android:exported="false" />
+        <activity
+            android:name=".MyProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.Aptitude.NoActionBar" />
+        <activity
+            android:name=".UserHome"
+            android:exported="false" />
+        <activity
+            android:name=".SentFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".SendComplaints"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateProfile"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
+            android:name=".Signup"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>
