@@ -1,24 +1,30 @@
 package com.example.aptitude;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class test_selectss extends AppCompatActivity {
+public class test_selectss extends AppCompatActivity implements View.OnClickListener {
+    Button start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_test_selectss);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        start = findViewById(R.id.start);
+        start.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == start) {
+            // Directly navigate to TestPage on button click
+            Intent intent = new Intent(test_selectss.this, QuestionInput.class);
+            startActivity(intent);
+        }
     }
 }

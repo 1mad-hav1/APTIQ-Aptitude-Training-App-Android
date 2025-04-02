@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -43,6 +44,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         submit.setOnClickListener(this);
         signup.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Check if the activity is a subpage (not the main entry point)
+        new AlertDialog.Builder(this)
+                    .setTitle("Exit App")
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        finishAffinity(); // Close all activities and exit app
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                        dialog.dismiss(); // Dismiss the dialog if "No" is clicked
+                    })
+                    .show();
     }
 
     @Override
@@ -84,6 +100,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                             ed.putString("lid", obj.getString("lid"));
                                             ed.putString("uid", obj.getString("uid"));
                                             ed.putString("user_name", obj.getString("user_name"));
+                                            ed.putString("user_level", obj.getString("user_level"));
+                                            ed.putString("progress_value",obj.getString("progress_value"));
                                             ed.commit();
 //                                            Intent in=new Intent(getApplicationContext(),gpstracker.class);
 //                                            in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

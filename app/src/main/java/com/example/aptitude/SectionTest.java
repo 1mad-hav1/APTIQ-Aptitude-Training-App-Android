@@ -298,6 +298,7 @@ public class SectionTest extends AppCompatActivity {
                             .setPositiveButton("OK", (dialog, which) -> {
                                 // Navigate to TestResult page
                                 Intent intent = new Intent(SectionTest.this, DetailedContent.class);
+                                intent.putExtra("completed","No");
                                 startActivity(intent);
                                 finish(); // Optional, to close the current activity
                             })
@@ -326,6 +327,7 @@ public class SectionTest extends AppCompatActivity {
                                 .setPositiveButton("OK", (dialog, which) -> {
                                     // Navigate to TestResult page
                                     Intent intent = new Intent(SectionTest.this, DetailedContent.class);
+                                    intent.putExtra("completed","Yes");
                                     startActivity(intent);
                                     finish(); // Optional, to close the current activity
                                 })

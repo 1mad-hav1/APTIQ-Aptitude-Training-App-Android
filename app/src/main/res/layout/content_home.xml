@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,44 +19,137 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingTop="80dp"
-        android:paddingHorizontal="16dp"
-        android:background="@color/white">
+        android:fillViewport="true">
 
-        <!-- Welcome message -->
-        <TextView
-            android:id="@+id/tv_welcome"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Welcome, User!"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="80dp"
+            android:paddingHorizontal="16dp"
+            android:background="@color/white">
 
-        <!-- App logo -->
-        <ImageView
-            android:id="@+id/tv_app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:src="@drawable/logo_transparent"
-            android:gravity="center"
-            android:layout_marginBottom="15dp" />
+            <!-- Welcome message -->
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="Welcome, User!"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        <!-- Key phrase -->
-        <TextView
-            android:id="@+id/tv_key_phrase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your Personalized Aptitude Tutor"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:gravity="center" />
-    </LinearLayout>
+            <!-- App logo -->
+            <ImageView
+                android:id="@+id/tv_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_transparent"
+                android:gravity="center"
+                android:layout_marginBottom="15dp" />
+
+            <!-- Key phrase -->
+            <TextView
+                android:id="@+id/tv_key_phrase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Personalized Aptitude Tutor"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
+            <!-- User Level Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You are currently at"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/tv_user_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beginner Level"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:gravity="center"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Progress Bar Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Progress"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:progress="50"
+                android:max="100"
+                android:layout_marginBottom="10dp"
+                android:progressTint="@color/blue" />
+
+            <!-- Marks Field -->
+            <TextView
+                android:id="@+id/tv_marks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100/1000"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Motivational Quote -->
+            <TextView
+                android:id="@+id/tv_motivation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You're doing great! Keep Going!"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+            <!-- Additional Advice Section -->
+            <TextView
+                android:id="@+id/tv_advice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You can focus more on medium and hard difficulty topics to improve your skills."
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Link to Educational Content -->
+            <TextView
+                android:id="@+id/tv_link_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore Educational Content"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                android:onClick="onEducationalContentClick" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

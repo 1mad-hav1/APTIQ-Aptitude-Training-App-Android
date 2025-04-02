@@ -1,14 +1,19 @@
 package com.example.aptitude;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,6 +73,29 @@ public class TestResult extends AppCompatActivity {
                 logicalMarkView, verbalMarkView, quantMarkView);
     }
 
+    @Override
+    public void onBackPressed() {
+        // Check if the activity is a subpage (not the main entry point)
+        if (!isTaskRoot()) {
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish(); // Close current activity
+        } else {
+            // Show exit confirmation dialog if it's the main activity
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit App")
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        finishAffinity(); // Close all activities and exit app
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                        dialog.dismiss(); // Dismiss the dialog if "No" is clicked
+                    })
+                    .show();
+        }
+    }
+
     private void fetchTestResult(int resultId, TextView testNameView, TextView testDetailsView,
                                  TextView overallMarksView, View overallCircle,
                                  TextView logicalMarkView, TextView verbalMarkView,
@@ -101,6 +129,69 @@ public class TestResult extends AppCompatActivity {
                     int verbalTotal = topicScores.getInt("verbalTotal");
                     int quantScore = topicScores.getInt("quantScore");
                     int quantTotal = topicScores.getInt("quantTotal");
+
+//                    dialog box with progress update
+                    String new_progress = js.getString("user_progress");
+                    String new_level = js.getString("user_level");
+                    SharedPreferences.Editor ed = sh.edit();
+
+                    String old_level = sh.getString("user_level","Beginner");
+                    String old_progress = sh.getString("progress_value","0");
+
+                    ed.putString("user_level", new_level);
+                    ed.putString("progress_value", new_progress);
+                    ed.commit();
+                    
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    LayoutInflater inflater = LayoutInflater.from(this);
+                    View dialogView = inflater.inflate(R.layout.custom_progress_dialog, null);
+                    builder.setView(dialogView);
+
+// Find views
+                    ProgressBar progressBar = dialogView.findViewById(R.id.progress_bar);
+                    TextView tvMarks = dialogView.findViewById(R.id.tv_marks);
+                    TextView progress_update = dialogView.findViewById(R.id.tv_message);
+                    TextView level_update = dialogView.findViewById(R.id.level_update);
+
+// Example values
+                    int progress = Integer.parseInt(new_progress);
+                    int change_progress = progress - Integer.parseInt(old_progress);
+                    progress_update.setText("Your progress has been changed by " + change_progress + " (" +old_progress+"->"+new_progress+")");
+                    if (!new_level.equals(old_level)){
+                        level_update.setText("Your Level has been changed from "+old_level+" level to "+new_level+" level");
+                    }
+                    else {
+                        level_update.setText("You are still on  "+new_level+" level");
+                    }
+
+                    if (new_level.equals("Beginner")) {
+                        progressBar.setMax(1500);
+                        tvMarks.setText(progress + "/" + 1000);
+                        progressBar.setProgress(progress);
+                    }
+                    else if (new_level.equals("Amateur")){
+                        progressBar.setMax(2500);
+                        tvMarks.setText(progress + "/" + 2500);
+                        progressBar.setProgress(progress-1000);
+                    }
+                    else {
+                        progressBar.setMax(5000);
+                        tvMarks.setText(progress + "/" + 5000);
+                        progressBar.setProgress(progress - 2500);
+                    }
+
+
+// Add button
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
 
                     JSONArray questionDetails = jsonObj.getJSONArray("questions_details");
 
@@ -148,6 +239,7 @@ public class TestResult extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("result_id", String.valueOf(resultId));
+                params.put("uid",sh.getString("uid","-1"));
                 return params;
             }
         };

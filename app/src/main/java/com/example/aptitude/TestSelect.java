@@ -3,7 +3,9 @@ package com.example.aptitude;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,7 +22,7 @@ public class TestSelect extends AppCompatActivity implements View.OnClickListene
     String difficulty = "", num_qns = "", time;
     Boolean verbal = false, logical = false, quant = false;
     EditText test_name;
-    TextView tv_time;
+    TextView tv_time, recommended;
     Button start;
 
     @Override
@@ -29,7 +31,7 @@ public class TestSelect extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_test_select);
 
         test_name = findViewById(R.id.test_name);
-
+        recommended = findViewById(R.id.recommended);
         cb_logical = findViewById(R.id.logical);
         cb_quant = findViewById(R.id.quant);
         cb_verbal = findViewById(R.id.verbal);
@@ -45,6 +47,22 @@ public class TestSelect extends AppCompatActivity implements View.OnClickListene
         tv_time = findViewById(R.id.time);
         tv_time.setText("_");
         start = findViewById(R.id.start);
+        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String user_level = sh.getString("user_level","Beginner");
+        if (user_level.equals("Beginner")){
+            rb_easy.setChecked(true);
+            recommended.setHint("Recommended: Easy");
+        }
+
+        else if (user_level.equals("Amateur")){
+            rb_medium.setChecked(true);
+            recommended.setHint("Recommended: Medium");
+        }
+
+        else {
+            rb_hard.setChecked(true);
+            recommended.setHint("Recommended: Hard");
+        }
 
         start.setOnClickListener(this);
 
@@ -116,6 +134,7 @@ public class TestSelect extends AppCompatActivity implements View.OnClickListene
         if (v == start) {
             StringBuilder selectedTopics = new StringBuilder();
             // Validate topics
+            logical=false; verbal=false; quant=false;
             if (cb_verbal.isChecked() || cb_quant.isChecked() || cb_logical.isChecked()) {
                 if (cb_logical.isChecked()) {
                     logical = true;

@@ -7,4 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".test_selectss">
 
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="Career Prediction Test"
+        android:textSize="24dp"
+
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="68dp"
+        android:text="Start Test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="333dp"
+        android:layout_height="211dp"
+        android:layout_marginTop="56dp"
+        android:text="📝 Instructions\n\n
+    1. This test aims to recommend your best career option based on your aptitude skills.\n
+    2. You will face *90 questions* (30 each from Logical, Verbal, and Quantitative sections).\n
+    3. The total time limit is *90 minutes*.\n
+    4. Questions are not categorized; you can navigate between them freely.\n
+    5. Stay focused and give your best effort. \nGood luck 🍀"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:textAlignment="center"
+        android:lineSpacingExtra="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

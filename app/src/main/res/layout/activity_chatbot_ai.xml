@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chatbot_AI">
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView for chat messages -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/input_layout"
+        android:layout_alignParentTop="true"
+        android:scrollbars="vertical" />
+
+    <!-- LinearLayout for input area -->
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <!-- EditText for message input -->
+        <!-- Message Input Field -->
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Enter your message here..."
+            android:inputType="text"
+            android:maxLines="3"
+            android:padding="8dp"
+            android:background="@drawable/input_background" />
+
+        <!-- Send Button inside a Square Box -->
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/send_button_bg">
+
+            <ImageView
+                android:id="@+id/send_button"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:contentDescription="Send Message"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_send" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

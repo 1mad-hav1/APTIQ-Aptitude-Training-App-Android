@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Pressed state -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp"/>
+            <solid android:color="@color/light_gray"/>  <!-- Change color when clicked -->
+            <stroke android:width="2dp" android:color="@color/dark_gray"/>
+        </shape>
+    </item>
+
+    <!-- Focused state (when the user starts typing) -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp"/>
+            <solid android:color="@android:color/white"/>
+            <stroke android:width="2dp" android:color="@color/blue"/>
+        </shape>
+    </item>
+
+    <!-- Default state -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp"/>
+            <solid android:color="@android:color/white"/>
+            <stroke android:width="2dp" android:color="@color/gray"/>
+        </shape>
+    </item>
+
+
+
 </selector>

@@ -4,10 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/home"
-            android:title="Home" />
+        C
         <item
             android:id="@+id/myprofile"
             android:icon="@drawable/profile"
@@ -24,6 +21,20 @@
             android:id="@+id/nav_results"
             android:icon="@drawable/result"
             android:title="Test Results" />
+
+<!--        <item-->
+<!--            android:id="@+id/button14"-->
+<!--            android:icon="@drawable/result"-->
+<!--            android:title="Career Prediction" />-->
+        <item
+            android:id="@+id/test_new"
+            android:icon="@drawable/career_prediction"
+            android:title="Career Prediction" />
+        <item
+            android:id="@+id/company"
+            android:icon="@drawable/company"
+            android:title="Company Based Questions" />
+
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/feedback"

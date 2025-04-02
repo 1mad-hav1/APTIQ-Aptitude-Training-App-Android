@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +52,7 @@ public class TestPage extends AppCompatActivity {
     SharedPreferences sh;
 
     // Arrays to store questions, options, correct answers, and user answers
+    String[] id;
     String[] questions;
     String[] question_type;
     String[][] options;
@@ -141,7 +144,7 @@ public class TestPage extends AppCompatActivity {
     }
 
     private void fetchQuestions() {
-        String url = sh.getString("url", "") + "and_get_test_questions";
+        String url = sh.getString("url", "") + "and_get_test_questionss";
         if (url.trim().isEmpty()) {
             Toast.makeText(this, "Invalid URL", Toast.LENGTH_SHORT).show();
             return;
@@ -157,12 +160,14 @@ public class TestPage extends AppCompatActivity {
 
                     totalQuestions = js.length();
                     questions = new String[totalQuestions];
+                    id = new String[totalQuestions];
                     question_type = new String[totalQuestions];
                     options = new String[totalQuestions][4];
                     correctAnswers = new String[totalQuestions];
 
                     for (int i = 0; i < totalQuestions; i++) {
                         JSONObject questionObj = js.getJSONObject(i);
+                        id[i] = questionObj.getString("id");
                         questions[i] = questionObj.getString("question");
                         question_type[i] = questionObj.getString("question_type");
                         options[i][0] = questionObj.getString("option1");
@@ -327,12 +332,15 @@ public class TestPage extends AppCompatActivity {
         quant_score = 0;
         verbal_score = 0;
         wrongAnswer = 0;
+        ArrayList<String> correctAnswerIds = new ArrayList<>(); // List for correct answer IDs
+        String correctAnswerIdsStr; // String for sending to backend
 
         // Calculate scores
         for (int i = 0; i < totalQuestions; i++) {
             if (selectedAnswers[i] != -1) {
                 if (options[i][selectedAnswers[i]].equals(correctAnswers[i])) {
                     total_score++;
+                    correctAnswerIds.add(id[i]);
                     if (question_type[i].equals("Logical")) {
                         logical_score++;
                     } else if (question_type[i].equals("Verbal")) {
@@ -345,9 +353,9 @@ public class TestPage extends AppCompatActivity {
                 }
             }
         }
-
+        correctAnswerIdsStr = TextUtils.join(",", correctAnswerIds);
         // Store results via API
-        String url = sh.getString("url", "") + "and_post_test_results";
+        String url = sh.getString("url", "") + "and_post_test_resultss";
         if (url.trim().isEmpty()) {
             Toast.makeText(this, "Invalid URL", Toast.LENGTH_SHORT).show();
             return;
@@ -391,6 +399,7 @@ public class TestPage extends AppCompatActivity {
                 params.put("logical_score", String.valueOf(logical_score));
                 params.put("verbal_score", String.valueOf(verbal_score));
                 params.put("quant_score", String.valueOf(quant_score));
+                params.put("correct_answer_ids", correctAnswerIdsStr); // Send correct answer IDs
                 if (total_score >= pass_mark)
                     params.put("pass_fail", "Pass");
                 else

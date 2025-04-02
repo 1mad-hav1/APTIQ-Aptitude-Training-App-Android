@@ -127,6 +127,31 @@ public class StudyMaterials extends AppCompatActivity {
         initializeFooter();
     }
 
+    @Override
+    public void onBackPressed() {
+        // Check if the activity is a subpage (not the main entry point)
+        if (!isTaskRoot()) {
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish(); // Close current activity
+        } else {
+            // Show exit confirmation dialog if it's the main activity
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit App")
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        finishAffinity(); // Close all activities and exit app
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                        dialog.dismiss(); // Dismiss the dialog if "No" is clicked
+                    })
+                    .show();
+        }
+    }
+
+
+
     private void initializeFooter() {
         findViewById(R.id.logical).setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), StudyMaterials.class);
